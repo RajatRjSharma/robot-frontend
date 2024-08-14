@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { toggleSideBar } from "../store/genericSlice";
 import { useLocation } from "react-router-dom";
 import { setMissionForm } from "../store/missionSlice";
+import { setRobotForm } from "../store/robotSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const Header = () => {
     case "/robot":
       title = "Robots";
       buttonMessage = "Add Robot";
-      addFunction = setMissionForm;
+      addFunction = setRobotForm;
       break;
     default:
       title = "Robot On Mission";

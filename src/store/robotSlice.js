@@ -10,6 +10,8 @@ export const fetchRobots = createAsyncThunk(
     dispatch(setLoader(true));
     try {
       const response = await axios({ url: endpoints.ROBOT, method: "GET" });
+      if (response?.data?.length && response?.data[0]?.id)
+        dispatch(fetchRobot(response?.data[0]?.id));
       return response.data;
     } catch (error) {
       console.error(error);
@@ -60,7 +62,7 @@ export const createOrUpdateRobot =
     try {
       const response = await axios({
         url: endpoints.ROBOT + (robotID ? `${robotID}/` : ""),
-        method: robotID ? "PUT" : "POST",
+        method: robotID ? "PATCH" : "POST",
         data,
       });
       dispatch(
@@ -70,6 +72,7 @@ export const createOrUpdateRobot =
           type: NotificationType.SUCCESS,
         })
       );
+      dispatch(clearRobotForm());
       return response.data;
     } catch (error) {
       console.error(error);
@@ -129,12 +132,20 @@ const initialState = {
     status: "idle",
     error: null,
   },
+  robotForm: { active: false, isEdit: false, data: null },
 };
 
 export const robotSlice = createSlice({
   name: "robot",
   initialState,
-  reducers: {},
+  reducers: {
+    setRobotForm: (state, action) => {
+      state.robotForm = action.payload;
+    },
+    clearRobotForm: (state) => {
+      state.robotForm = { active: false, isEdit: false, data: null };
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchRobots.pending, (state) => {
@@ -166,6 +177,6 @@ export const robotSlice = createSlice({
   },
 });
 
-export const {} = robotSlice.actions;
+export const { setRobotForm, clearRobotForm } = robotSlice.actions;
 
 export default robotSlice.reducer;
