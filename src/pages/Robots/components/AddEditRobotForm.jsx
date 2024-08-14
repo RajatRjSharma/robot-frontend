@@ -6,6 +6,7 @@ import {
   createOrUpdateRobot,
   fetchRobots,
 } from "../../../store/robotSlice";
+import Input from "../../../components/Input";
 
 const AddEditRobotForm = () => {
   const dispatch = useDispatch();
@@ -13,6 +14,8 @@ const AddEditRobotForm = () => {
 
   const [nameRef, setNameRef] = useState(null);
   const [modelNameRef, setModelNameRef] = useState(null);
+  const [xCoordinateRef, setXCoordinateRef] = useState(null);
+  const [yCoordinateRef, setYCoordinateRef] = useState(null);
   const [error, setError] = useState({});
 
   /**
@@ -25,6 +28,8 @@ const AddEditRobotForm = () => {
     const payload = {
       name: nameRef?.value || "",
       model_name: modelNameRef?.value || "",
+      pose_x: xCoordinateRef?.value,
+      pose_y: yCoordinateRef?.value,
     };
 
     let valid = true;
@@ -38,6 +43,20 @@ const AddEditRobotForm = () => {
     if (!payload?.model_name?.trim()) {
       valid = false;
       error.model_name = "Enter valid model name";
+    }
+
+    if (isNaN(payload?.pose_x)) {
+      valid = false;
+      error.pose_x = "Enter valid x coordinate";
+    } else {
+      payload.pose_x = +payload.pose_x;
+    }
+
+    if (isNaN(payload?.pose_y)) {
+      valid = false;
+      error.pose_y = "Enter valid y coordinate";
+    } else {
+      payload.pose_y = +payload.pose_y;
     }
 
     setError(error);
@@ -74,50 +93,42 @@ const AddEditRobotForm = () => {
           <div className="p-4 md:p-5 !pt-3">
             <form className="space-y-4" onSubmit={handleSubmit}>
               <div>
-                <label
-                  htmlFor="name"
-                  className="block mb-2 text-sm font-medium text-gray-900 "
-                >
-                  Robot Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  ref={setNameRef}
+                <Input
+                  label={"Robot Name"}
+                  type={"text"}
+                  refer={setNameRef}
                   defaultValue={robotForm?.data?.name || ""}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 "
-                  placeholder="Enter name"
-                  required
+                  placeholder={"Enter name"}
+                  error={error?.name || ""}
                 />
-                {error?.name && (
-                  <span className="text-red-500 text-sm ml-1">
-                    {error?.name}
-                  </span>
-                )}
               </div>
               <div>
-                <label
-                  htmlFor="model"
-                  className="block mb-2 text-sm font-medium text-gray-900 "
-                >
-                  Model Name
-                </label>
-                <input
-                  type="text"
-                  name="model"
-                  id="model"
-                  ref={setModelNameRef}
+                <Input
+                  label={"Model Name"}
+                  type={"text"}
+                  refer={setModelNameRef}
                   defaultValue={robotForm?.data?.model_name || ""}
-                  placeholder="Enter model name"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 "
-                  required
+                  placeholder={"Enter model name"}
+                  error={error?.model_name || ""}
                 />
-                {error?.model_name && (
-                  <span className="text-red-500 text-sm ml-1">
-                    {error?.model_name}
-                  </span>
-                )}
+              </div>
+              <div className="flex justify-between items-center gap-2">
+                <Input
+                  label={"X Coordinate"}
+                  type={"number"}
+                  refer={setXCoordinateRef}
+                  defaultValue={robotForm?.data?.pose_x || ""}
+                  placeholder={"Enter x coordinate"}
+                  error={error?.pose_x || ""}
+                />
+                <Input
+                  label={"Y Coordinate"}
+                  type={"number"}
+                  refer={setYCoordinateRef}
+                  defaultValue={robotForm?.data?.pose_y || ""}
+                  placeholder={"Enter y coordinate"}
+                  error={error?.pose_y || ""}
+                />
               </div>
               <button
                 type="submit"
