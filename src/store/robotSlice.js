@@ -60,7 +60,7 @@ export const createOrUpdateRobot =
     try {
       const response = await axios({
         url: endpoints.ROBOT + (robotID ? `${robotID}/` : ""),
-        method: "POST",
+        method: robotID ? "PUT" : "POST",
         data,
       });
       dispatch(

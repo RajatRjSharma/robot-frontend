@@ -10,6 +10,8 @@ export const fetchMissions = createAsyncThunk(
     dispatch(setLoader(true));
     try {
       const response = await axios({ url: endpoints.MISSION, method: "GET" });
+      if (response?.data?.length && response?.data[0]?.id)
+        dispatch(fetchMission(response?.data[0]?.id));
       return response.data;
     } catch (error) {
       console.error(error);
@@ -60,7 +62,7 @@ export const createOrUpdateMission =
     try {
       const response = await axios({
         url: endpoints.MISSION + (missionID ? `${missionID}/` : ""),
-        method: "POST",
+        method: missionID ? "PUT" : "POST",
         data,
       });
       dispatch(
@@ -70,6 +72,7 @@ export const createOrUpdateMission =
           type: NotificationType.SUCCESS,
         })
       );
+      dispatch(clearMissionForm());
       return response.data;
     } catch (error) {
       console.error(error);
@@ -129,12 +132,20 @@ const initialState = {
     status: "idle",
     error: null,
   },
+  missionForm: { active: false, isEdit: false, data: null },
 };
 
 export const missionSlice = createSlice({
   name: "mission",
   initialState,
-  reducers: {},
+  reducers: {
+    setMissionForm: (state, action) => {
+      state.missionForm = action.payload;
+    },
+    clearMissionForm: (state) => {
+      state.missionForm = { active: false, isEdit: false, data: null };
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchMissions.pending, (state) => {
@@ -166,6 +177,6 @@ export const missionSlice = createSlice({
   },
 });
 
-export const {} = missionSlice.actions;
+export const { setMissionForm, clearMissionForm } = missionSlice.actions;
 
 export default missionSlice.reducer;
