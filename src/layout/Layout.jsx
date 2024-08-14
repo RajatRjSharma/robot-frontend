@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
       <div className="flex w-full h-full">
         <Sidebar />
         <main
-          className="flex-1 overflow-auto"
+          className="flex-1"
           style={{ height: window.innerHeight - 56 + "px" }}
         >
           {children}
