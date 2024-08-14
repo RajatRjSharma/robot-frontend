@@ -7,7 +7,7 @@ import { toggleSideBar } from "../store/genericSlice";
 const Header = () => {
   const dispatch = useDispatch();
   return (
-    <header>
+    <header id="header" className="h-14" aria-label="Header">
       <div className=" border-gray-200 py-2.5 bg-gray-800 fixed w-full z-10">
         <div className="flex flex-wrap justify-between items-center mx-auto w-full">
           <div className="flex items-center">
