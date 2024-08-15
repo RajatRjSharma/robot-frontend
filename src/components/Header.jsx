@@ -2,7 +2,7 @@ import React from "react";
 import logoPng from "../assets/robot.png";
 import menuSvg from "../assets/menu.svg";
 import { useDispatch } from "react-redux";
-import { toggleSideBar } from "../store/genericSlice";
+import { setSideBar, toggleSideBar } from "../store/genericSlice";
 import { useLocation } from "react-router-dom";
 import { setMissionForm } from "../store/missionSlice";
 import { setRobotForm } from "../store/robotSlice";
@@ -36,7 +36,11 @@ const Header = () => {
           <div className="flex items-center">
             <div className="w-[52px] h-full flex justify-center items-center mr-4">
               <img
-                onClick={() => dispatch(toggleSideBar())}
+                onClick={() =>
+                  location?.pathname?.includes("teleoperate")
+                    ? dispatch(setSideBar(false))
+                    : dispatch(toggleSideBar())
+                }
                 src={menuSvg}
                 className="flex-shrink-0 w-7 h-7  transition duration-75  cursor-pointer"
                 alt="robot_on_mission_logo"

@@ -70,10 +70,6 @@ const AddEditRobotForm = () => {
       }
   };
 
-  useEffect(() => {
-    dispatch(fetchRobots());
-  }, []);
-
   return (
     <div className="overflow-y-auto overflow-x-hidden fixed flex z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
       <div className="relative p-4 w-full max-w-md max-h-full">

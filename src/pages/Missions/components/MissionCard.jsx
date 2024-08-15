@@ -5,6 +5,7 @@ import { setMissionForm } from "../../../store/missionSlice";
 import locationSvg from "../../../assets/location.svg";
 import Tooltip from "../../../components/Tooltip";
 import { useNavigate } from "react-router-dom";
+import { setSideBar } from "../../../store/genericSlice";
 
 const MissionCard = ({ selectedMission }) => {
   const dispatch = useDispatch();
@@ -83,6 +84,7 @@ const MissionCard = ({ selectedMission }) => {
             className="text-gray-900 hover:bg-gray-300 hover:text-gray-50 focus:ring-4 focus:outline-none focus:ring-gray-400 font-medium rounded-full text-sm p-1 text-center inline-flex items-center"
             onClick={() =>
               selectedMission?.data?.robot?.id &&
+              dispatch(setSideBar(false)) &&
               navigate(`/teleoperate/${selectedMission?.data?.robot?.id}`)
             }
           >

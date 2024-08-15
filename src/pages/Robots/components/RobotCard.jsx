@@ -57,6 +57,7 @@ const RobotCard = ({ selectedRobot }) => {
             className="text-gray-900 hover:bg-gray-300 hover:text-gray-50 focus:ring-4 focus:outline-none focus:ring-gray-400 font-medium rounded-full text-sm p-1 text-center inline-flex items-center"
             onClick={() =>
               selectedRobot?.data?.id &&
+              dispatch(setSideBar(false)) &&
               navigate(`/teleoperate/${selectedRobot?.data?.id}`)
             }
           >

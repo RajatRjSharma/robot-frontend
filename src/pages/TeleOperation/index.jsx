@@ -40,11 +40,16 @@ const TeleOperation = () => {
           newCoordinates = { x: newX, y: newY };
         else {
           if (!xGreaterThanEqualZero) newCoordinates = { x: 0, y: prev.y };
-          if (!xLessThanEqualWidth)
+          else if (!xLessThanEqualWidth)
             newCoordinates = { x: boundaryBoundingBox.width - 50, y: prev.y };
-          if (!yGreaterThanEqualZero) newCoordinates = { x: prev.x, y: 0 };
-          if (!yLessThanEqualHeight)
-            newCoordinates = { x: prev.x, y: boundaryBoundingBox.height - 50 };
+
+          if (!yGreaterThanEqualZero)
+            newCoordinates = { x: newCoordinates.x, y: 0 };
+          else if (!yLessThanEqualHeight)
+            newCoordinates = {
+              x: newCoordinates.x,
+              y: boundaryBoundingBox.height - 50,
+            };
         }
         if (newCoordinates.x !== prev.x || newCoordinates.y !== prev.y)
           sendMessage({ pose_x: newCoordinates.x, pose_y: newCoordinates.y });
@@ -91,7 +96,7 @@ const TeleOperation = () => {
       const rect = boundaryElementRef.current.getBoundingClientRect();
       setBoundaryBoundingBox(rect);
     }
-  }, [boundaryElementRef.current]);
+  }, [boundaryElementRef.current?.offsetWidth]);
 
   useEffect(() => {
     if (messages.length) {
