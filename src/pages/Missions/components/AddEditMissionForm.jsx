@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import closeSvg from "../../../assets/close.svg";
 import {
@@ -66,7 +66,7 @@ const AddEditMissionForm = () => {
 
   useEffect(() => {
     dispatch(fetchRobots());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="overflow-y-auto overflow-x-hidden fixed flex z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">

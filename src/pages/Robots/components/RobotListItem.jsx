@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import deleteSvg from "../../../assets/delete.svg";
@@ -49,13 +48,18 @@ const RobotListItem = ({ robot, index, selectedRobot }) => {
 
 RobotListItem.propTypes = {
   robot: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    model_name: PropTypes.string.isRequired,
-    pose_x: PropTypes.number.isRequired,
-    pose_y: PropTypes.number.isRequired,
-  }).isRequired,
-  index: PropTypes.number.isRequired,
+    id: PropTypes.number,
+    name: PropTypes.string,
+    model_name: PropTypes.string,
+    pose_x: PropTypes.number,
+    pose_y: PropTypes.number,
+  }),
+  index: PropTypes.number,
+  selectedRobot: PropTypes.shape({
+    data: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }),
 };
 
 export default RobotListItem;

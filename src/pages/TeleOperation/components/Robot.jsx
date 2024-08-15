@@ -1,5 +1,5 @@
-import React from "react";
 import robotPng from "../../../assets/robot.png";
+import PropTypes from "prop-types";
 
 const Robot = ({ position }) => {
   const { x, y } = position;
@@ -22,6 +22,13 @@ const Robot = ({ position }) => {
       />
     </div>
   );
+};
+
+Robot.propTypes = {
+  position: PropTypes.shape({
+    x: PropTypes.number,
+    y: PropTypes.number,
+  }),
 };
 
 export default Robot;

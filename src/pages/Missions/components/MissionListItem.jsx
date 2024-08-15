@@ -1,4 +1,3 @@
-import React from "react";
 import { deleteMission, fetchMission } from "../../../store/missionSlice";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
@@ -51,12 +50,17 @@ const MissionListItem = ({ mission, index, selectedMission }) => {
 
 MissionListItem.propTypes = {
   mission: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    robot: PropTypes.number.isRequired,
-  }).isRequired,
-  index: PropTypes.number.isRequired,
+    id: PropTypes.number,
+    name: PropTypes.string,
+    description: PropTypes.string,
+    robot: PropTypes.number,
+  }),
+  index: PropTypes.number,
+  selectedMission: PropTypes.shape({
+    data: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }),
 };
 
 export default MissionListItem;

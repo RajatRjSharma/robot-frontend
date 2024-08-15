@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Joystick from "./components/Joystick";
 import Robot from "./components/Robot";
 import { useParams } from "react-router-dom";
@@ -6,7 +6,7 @@ import endpoints from "../../services/apis/endpoints";
 import useWebSocket from "./websocket/useWebSocket";
 import { useDispatch } from "react-redux";
 import { setLoader, setNotification } from "../../store/genericSlice";
-import { NotificationType } from "../../components/Notification/NotificationItem";
+import { NotificationType } from "../../services/constants";
 import RobotStatusCard from "./components/RobotStatusCard";
 
 const TeleOperation = () => {
@@ -109,6 +109,7 @@ const TeleOperation = () => {
         });
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messages]);
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { fetchRobots } from "../../store/robotSlice";
 import { useDispatch, useSelector } from "react-redux";
 import RobotListItem from "./components/RobotListItem";

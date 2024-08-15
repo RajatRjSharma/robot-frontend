@@ -1,11 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import closeSvg from "../../../assets/close.svg";
-import {
-  clearRobotForm,
-  createOrUpdateRobot,
-  fetchRobots,
-} from "../../../store/robotSlice";
+import { clearRobotForm, createOrUpdateRobot } from "../../../store/robotSlice";
 import Input from "../../../components/Input";
 import Tooltip from "../../../components/Tooltip";
 

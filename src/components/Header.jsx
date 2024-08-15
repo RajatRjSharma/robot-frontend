@@ -1,4 +1,3 @@
-import React from "react";
 import logoPng from "../assets/robot.png";
 import menuSvg from "../assets/menu.svg";
 import { useDispatch } from "react-redux";

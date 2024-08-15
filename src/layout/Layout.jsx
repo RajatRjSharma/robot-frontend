@@ -1,9 +1,9 @@
-import React from "react";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import Loader from "../components/Loader";
 import Notification from "../components/Notification";
 import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
 
 const Layout = ({ children }) => {
   const { loader } = useSelector((state) => state.generic);
@@ -23,6 +23,10 @@ const Layout = ({ children }) => {
       </div>
     </div>
   );
+};
+
+Layout.propTypes = {
+  children: PropTypes.any,
 };
 
 export default Layout;

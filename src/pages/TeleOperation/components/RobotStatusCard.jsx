@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 
 const RobotStatusCard = ({ robotDetails, robotPosition, messages }) => {
   const thirdLastMessage =
@@ -84,6 +84,18 @@ const RobotStatusCard = ({ robotDetails, robotPosition, messages }) => {
       </div>
     </div>
   );
+};
+
+RobotStatusCard.propTypes = {
+  robotDetails: PropTypes.shape({
+    name: PropTypes.string,
+    model_name: PropTypes.string,
+  }),
+  robotPosition: PropTypes.shape({
+    x: PropTypes.number,
+    y: PropTypes.number,
+  }),
+  messages: PropTypes.array,
 };
 
 export default RobotStatusCard;

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "./notification.css";
 import NotificationItem from "./NotificationItem";
 import { useDispatch, useSelector } from "react-redux";

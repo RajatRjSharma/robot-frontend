@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { setLoader, setNotification } from "./genericSlice";
 import axios from "axios";
 import endpoints from "../services/apis/endpoints";
-import { NotificationType } from "../components/Notification/NotificationItem";
+import { NotificationType } from "../services/constants";
 
 export const fetchMissions = createAsyncThunk(
   "mission/fetchMissions",

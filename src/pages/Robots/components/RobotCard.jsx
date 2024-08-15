@@ -1,4 +1,3 @@
-import React from "react";
 import editSvg from "../../../assets/edit.svg";
 import { useDispatch } from "react-redux";
 import { setRobotForm } from "../../../store/robotSlice";
@@ -6,6 +5,7 @@ import locationSvg from "../../../assets/location.svg";
 import Tooltip from "../../../components/Tooltip";
 import { useNavigate } from "react-router-dom";
 import { setSideBar } from "../../../store/genericSlice";
+import PropTypes from "prop-types";
 
 const RobotCard = ({ selectedRobot }) => {
   const dispatch = useDispatch();
@@ -68,6 +68,18 @@ const RobotCard = ({ selectedRobot }) => {
       </div>
     </div>
   );
+};
+
+RobotCard.propTypes = {
+  selectedRobot: PropTypes.shape({
+    data: PropTypes.shape({
+      name: PropTypes.string,
+      model_name: PropTypes.string,
+      id: PropTypes.number,
+      pose_x: PropTypes.number,
+      pose_y: PropTypes.number,
+    }),
+  }),
 };
 
 export default RobotCard;

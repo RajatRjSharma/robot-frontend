@@ -1,4 +1,3 @@
-import React from "react";
 import editSvg from "../../../assets/edit.svg";
 import { useDispatch } from "react-redux";
 import { setMissionForm } from "../../../store/missionSlice";
@@ -6,6 +5,7 @@ import locationSvg from "../../../assets/location.svg";
 import Tooltip from "../../../components/Tooltip";
 import { useNavigate } from "react-router-dom";
 import { setSideBar } from "../../../store/genericSlice";
+import PropTypes from "prop-types";
 
 const MissionCard = ({ selectedMission }) => {
   const dispatch = useDispatch();
@@ -94,6 +94,22 @@ const MissionCard = ({ selectedMission }) => {
       </div>
     </div>
   );
+};
+
+MissionCard.propTypes = {
+  selectedMission: PropTypes.shape({
+    data: PropTypes.shape({
+      name: PropTypes.string,
+      description: PropTypes.string,
+      robot: PropTypes.shape({
+        name: PropTypes.string,
+        model_name: PropTypes.string,
+        id: PropTypes.number,
+        pose_x: PropTypes.number,
+        pose_y: PropTypes.number,
+      }),
+    }),
+  }),
 };
 
 export default MissionCard;

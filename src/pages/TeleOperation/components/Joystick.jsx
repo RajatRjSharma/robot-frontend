@@ -1,11 +1,15 @@
-import React from "react";
 import ButtonForJoystick from "../../../components/ButtonForJoystick";
 import upSvg from "../../../assets/up.svg";
 import downSvg from "../../../assets/down.svg";
 import leftSvg from "../../../assets/left.svg";
 import rightSvg from "../../../assets/right.svg";
+import PropTypes from "prop-types";
 
-const Joystick = ({ onMove }) => {
+const Joystick = ({
+  onMove = (_) => {
+    _;
+  },
+}) => {
   return (
     <div
       className="flex flex-col gap-1 justify-center items-center absolute z-50"
@@ -47,6 +51,10 @@ const Joystick = ({ onMove }) => {
       />
     </div>
   );
+};
+
+Joystick.propTypes = {
+  onMove: PropTypes.func.isRequired,
 };
 
 export default Joystick;

@@ -1,4 +1,3 @@
-import React from "react";
 import robotsSvg from "../assets/robots.svg";
 import missionSvg from "../assets/missions.svg";
 import robotsActiveSvg from "../assets/robotsActive.svg";
