@@ -34,7 +34,7 @@ const Input = ({
 
 Input.propTypes = {
   label: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   refer: PropTypes.func.isRequired,
   defaultValue: PropTypes.any,
   placeholder: PropTypes.string,

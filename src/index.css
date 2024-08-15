@@ -32,7 +32,3 @@ html::-webkit-scrollbar-thumb:active {
   background: rgb(68, 68, 68);
   border-radius: 10px;
 }
-
-.colored-img {
-  filter: hue-rotate(180deg) sepia(1) saturate(2);
-}
