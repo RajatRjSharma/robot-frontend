@@ -35,9 +35,10 @@ const MissionListItem = ({ mission, index, selectedMission }) => {
             <button
               type="button"
               className="text-gray-900 hover:bg-gray-300 hover:text-gray-50 focus:ring-4 focus:outline-none focus:ring-gray-400 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center"
-              onClick={() =>
-                mission?.id && dispatch(deleteMission(mission?.id))
-              }
+              onClick={(e) => {
+                e.stopPropagation();
+                mission?.id && dispatch(deleteMission(mission?.id));
+              }}
             >
               <img src={deleteSvg} className="h-5" alt="delete_mission" />
             </button>
