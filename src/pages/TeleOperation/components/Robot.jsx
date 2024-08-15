@@ -1,9 +1,8 @@
 import React from "react";
+import robotPng from "../../../assets/robot.png";
 
 const Robot = ({ position }) => {
   const { x, y } = position;
-
-  console.log(x,y)
 
   const style = {
     position: "absolute",
@@ -11,11 +10,18 @@ const Robot = ({ position }) => {
     top: `${y}px`,
     width: "50px",
     height: "50px",
-    backgroundColor: "blue",
     borderRadius: "50%",
   };
 
-  return <div style={style} />;
+  return (
+    <div className="flex justify-center items-center" style={style}>
+      <img
+        src={robotPng}
+        className="cursor-pointer w-full h-full"
+        alt="robot_on_mission"
+      />
+    </div>
+  );
 };
 
 export default Robot;

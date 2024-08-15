@@ -2,10 +2,13 @@ import React from "react";
 import editSvg from "../../../assets/edit.svg";
 import { useDispatch } from "react-redux";
 import { setRobotForm } from "../../../store/robotSlice";
+import locationSvg from "../../../assets/location.svg";
 import Tooltip from "../../../components/Tooltip";
+import { useNavigate } from "react-router-dom";
 
 const RobotCard = ({ selectedRobot }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <div className="w-full py-2 px-3 shadow-md rounded-md my-2 cursor-pointer bg-gray-200 flex flex-col gap-1">
@@ -48,6 +51,18 @@ const RobotCard = ({ selectedRobot }) => {
         <p className="font-medium text-gray-700">
           ({selectedRobot?.data?.pose_x}, {selectedRobot?.data?.pose_y})
         </p>
+        <Tooltip text="Teleoperate">
+          <button
+            type="button"
+            className="text-gray-900 hover:bg-gray-300 hover:text-gray-50 focus:ring-4 focus:outline-none focus:ring-gray-400 font-medium rounded-full text-sm p-1 text-center inline-flex items-center"
+            onClick={() =>
+              selectedRobot?.data?.id &&
+              navigate(`/teleoperate/${selectedRobot?.data?.id}`)
+            }
+          >
+            <img src={locationSvg} className="h-5" alt="tele_operate_svg" />
+          </button>
+        </Tooltip>
       </div>
     </div>
   );

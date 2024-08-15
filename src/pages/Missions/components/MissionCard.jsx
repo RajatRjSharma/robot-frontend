@@ -4,9 +4,11 @@ import { useDispatch } from "react-redux";
 import { setMissionForm } from "../../../store/missionSlice";
 import locationSvg from "../../../assets/location.svg";
 import Tooltip from "../../../components/Tooltip";
+import { useNavigate } from "react-router-dom";
 
 const MissionCard = ({ selectedMission }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <div className="w-full py-2 px-3 shadow-md rounded-md my-2 cursor-pointer bg-gray-200 flex flex-col gap-1">
@@ -79,9 +81,12 @@ const MissionCard = ({ selectedMission }) => {
           <button
             type="button"
             className="text-gray-900 hover:bg-gray-300 hover:text-gray-50 focus:ring-4 focus:outline-none focus:ring-gray-400 font-medium rounded-full text-sm p-1 text-center inline-flex items-center"
-            onClick={() => {}}
+            onClick={() =>
+              selectedMission?.data?.robot?.id &&
+              navigate(`/teleoperate/${selectedMission?.data?.robot?.id}`)
+            }
           >
-            <img src={locationSvg} className="h-5" alt="edit_mission" />
+            <img src={locationSvg} className="h-5" alt="tele_operate_svg" />
           </button>
         </Tooltip>
       </div>
