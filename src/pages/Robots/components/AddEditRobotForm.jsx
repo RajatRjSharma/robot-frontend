@@ -16,7 +16,7 @@ const AddEditRobotForm = () => {
   const [error, setError] = useState({});
 
   /**
-   * Handle the addition/updation of new robot
+   * Handle the addition/updation of robot
    *
    * @param {*} e : Event
    */

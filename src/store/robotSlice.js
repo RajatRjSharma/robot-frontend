@@ -4,6 +4,10 @@ import axios from "axios";
 import endpoints from "../services/apis/endpoints";
 import { NotificationType } from "../services/constants";
 
+/**
+ * Method will handle api call & store state update for fetching robots.
+ * GET list of robots.
+ */
 export const fetchRobots = createAsyncThunk(
   "robot/fetchRobots",
   async (_, { dispatch }) => {
@@ -29,6 +33,10 @@ export const fetchRobots = createAsyncThunk(
   }
 );
 
+/**
+ * Method will handle api call & store state update for fetching a robot by id.
+ * GET a robot by id.
+ */
 export const fetchRobot = createAsyncThunk(
   "robot/fetchRobot",
   async (robotID, { dispatch }) => {
@@ -55,6 +63,10 @@ export const fetchRobot = createAsyncThunk(
   }
 );
 
+/**
+ * Method will handle api call for creating or updating a robot.
+ * PUT or POST based on robot update by id or create.
+ */
 export const createOrUpdateRobot =
   (data, robotID = 0) =>
   async (dispatch) => {
@@ -90,6 +102,10 @@ export const createOrUpdateRobot =
     }
   };
 
+/**
+ * Method will handle api call for deleting a robot.
+ * DELETE a robot by id.
+ */
 export const deleteRobot = (robotID) => async (dispatch) => {
   dispatch(setLoader(true));
   try {

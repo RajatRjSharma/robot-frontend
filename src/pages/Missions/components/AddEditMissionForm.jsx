@@ -22,7 +22,7 @@ const AddEditMissionForm = () => {
   const [error, setError] = useState({});
 
   /**
-   * Handle the addition/updation of new mission
+   * Handle the addition/updation of mission
    *
    * @param {*} e : Event
    */

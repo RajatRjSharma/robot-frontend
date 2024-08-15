@@ -4,6 +4,10 @@ import axios from "axios";
 import endpoints from "../services/apis/endpoints";
 import { NotificationType } from "../services/constants";
 
+/**
+ * Method will handle api call & store state update for fetching missions.
+ * GET list of missions.
+ */
 export const fetchMissions = createAsyncThunk(
   "mission/fetchMissions",
   async (_, { dispatch }) => {
@@ -29,6 +33,10 @@ export const fetchMissions = createAsyncThunk(
   }
 );
 
+/**
+ * Method will handle api call & store state update for fetching a mission by id.
+ * GET a mission by id.
+ */
 export const fetchMission = createAsyncThunk(
   "mission/fetchMission",
   async (missionID, { dispatch }) => {
@@ -55,6 +63,10 @@ export const fetchMission = createAsyncThunk(
   }
 );
 
+/**
+ * Method will handle api call for creating or updating a mission.
+ * PUT or POST based on mission update by id or create.
+ */
 export const createOrUpdateMission =
   (data, missionID = 0) =>
   async (dispatch) => {
@@ -90,6 +102,10 @@ export const createOrUpdateMission =
     }
   };
 
+/**
+ * Method will handle api call for deleting a mission.
+ * DELETE a mission by id.
+ */
 export const deleteMission = (missionID) => async (dispatch) => {
   dispatch(setLoader(true));
   try {

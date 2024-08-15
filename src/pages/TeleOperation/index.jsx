@@ -21,6 +21,12 @@ const TeleOperation = () => {
     `${WEBSOCKET_URL}${endpoints.TELEOPERATE}${id}/`
   );
 
+  /**
+   * Method will handle the movement of robot, but taking the change
+   * in x or y coordinate and validating for boundary condition, then
+   * sending as a json update through web socket and update local state.
+   * @param {*} {x,y} Value of change in x or y coordinate.
+   */
   const handleJoystickMove = ({ x, y }) => {
     if (isConnected === "YES")
       setRobotPosition((prev) => {

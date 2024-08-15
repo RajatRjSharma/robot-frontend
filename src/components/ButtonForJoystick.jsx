@@ -10,6 +10,10 @@ const ButtonForJoystick = ({ onAction, type = "button", imageSrc, name }) => {
     };
   }, [intervalId]);
 
+  /**
+   * Method to handle mouse down event and call
+   * onAction func every 250ms
+   */
   const handleMouseDown = () => {
     if (intervalId) clearInterval(intervalId);
     const id = setInterval(() => {
@@ -18,10 +22,16 @@ const ButtonForJoystick = ({ onAction, type = "button", imageSrc, name }) => {
     setIntervalId(id);
   };
 
+  /**
+   * Method to handle mouse up event
+   */
   const handleMouseUp = () => {
     if (intervalId) clearInterval(intervalId);
   };
 
+  /**
+   * Method to handle mouse leave event
+   */
   const handleMouseLeave = () => {
     if (intervalId) clearInterval(intervalId);
   };

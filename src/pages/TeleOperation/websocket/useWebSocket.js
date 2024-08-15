@@ -6,6 +6,9 @@ const useWebSocket = (url) => {
   const wsRef = useRef(null);
   const reconnectInterval = useRef(1000); // Initial reconnect interval
 
+  /**
+   * Method will handle full lifecycle of the websocket.
+   */
   const connect = useCallback(() => {
     if (wsRef.current) {
       console.warn("WebSocket is already connected or connecting.");
@@ -14,11 +17,13 @@ const useWebSocket = (url) => {
 
     wsRef.current = new WebSocket(url);
 
+    // Connection success
     wsRef.current.onopen = () => {
       setIsConnected("YES");
       reconnectInterval.current = 1000; // Reset reconnect interval
     };
 
+    // On receiving message from web socket
     wsRef.current.onmessage = (event) => {
       const data = JSON.parse(event.data);
       setMessages((prevMessages) => [...prevMessages, data]);
@@ -27,6 +32,7 @@ const useWebSocket = (url) => {
       else setIsConnected("YES");
     };
 
+    // Connection close
     wsRef.current.onclose = () => {
       setIsConnected("NO");
       wsRef.current = null;
@@ -38,6 +44,7 @@ const useWebSocket = (url) => {
       setTimeout(connect, reconnectInterval.current);
     };
 
+    // On error during connection
     wsRef.current.onerror = (error) => {
       setIsConnected("ERROR");
       console.error("WebSocket error:", error);
@@ -53,6 +60,10 @@ const useWebSocket = (url) => {
     };
   }, [connect, url]);
 
+  /**
+   * Method will handle sending of message / data through web socket.
+   * @param {*} message : Json data to be sent
+   */
   const sendMessage = (message) => {
     if (wsRef.current) {
       wsRef.current.send(JSON.stringify(message));
