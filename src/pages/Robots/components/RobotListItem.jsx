@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import deleteSvg from "../../../assets/delete.svg";
 import { deleteRobot, fetchRobot } from "../../../store/robotSlice";
+import Tooltip from "../../../components/Tooltip";
 
 const RobotListItem = ({ robot, index, selectedRobot }) => {
   const dispatch = useDispatch();
@@ -31,13 +32,15 @@ const RobotListItem = ({ robot, index, selectedRobot }) => {
           </span>
         </div>
         <div className="flex items-center text-base font-semibold text-gray-900 gap-2">
-          <button
-            type="button"
-            className="text-gray-900 hover:bg-gray-300 hover:text-gray-50 focus:ring-4 focus:outline-none focus:ring-gray-400 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center"
-            onClick={() => robot?.id && dispatch(deleteRobot(robot?.id))}
-          >
-            <img src={deleteSvg} className="h-5" alt="delete_robot" />
-          </button>
+          <Tooltip text="Delete">
+            <button
+              type="button"
+              className="text-gray-900 hover:bg-gray-300 hover:text-gray-50 focus:ring-4 focus:outline-none focus:ring-gray-400 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center"
+              onClick={() => robot?.id && dispatch(deleteRobot(robot?.id))}
+            >
+              <img src={deleteSvg} className="h-5" alt="delete_robot" />
+            </button>
+          </Tooltip>
         </div>
       </div>
     </li>

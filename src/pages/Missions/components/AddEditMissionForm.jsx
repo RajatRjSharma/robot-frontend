@@ -9,6 +9,7 @@ import { fetchRobots } from "../../../store/robotSlice";
 import Input from "../../../components/Input";
 import Textarea from "../../../components/Textarea";
 import Select from "../../../components/Select";
+import Tooltip from "../../../components/Tooltip";
 
 const AddEditMissionForm = () => {
   const dispatch = useDispatch();
@@ -75,14 +76,15 @@ const AddEditMissionForm = () => {
             <h3 className="text-xl font-semibold text-gray-900 ">
               {missionForm?.isEdit ? "Update Mission" : "Add Mission"}
             </h3>
-
-            <button
-              type="button"
-              className="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
-              onClick={() => dispatch(clearMissionForm())}
-            >
-              <img src={closeSvg} className="h-3" alt="close_button" />
-            </button>
+            <Tooltip text="Close">
+              <button
+                type="button"
+                className="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
+                onClick={() => dispatch(clearMissionForm())}
+              >
+                <img src={closeSvg} className="h-3" alt="close_button" />
+              </button>
+            </Tooltip>
           </div>
           <div className="p-4 md:p-5 !pt-3">
             <form className="space-y-4" onSubmit={handleSubmit}>
