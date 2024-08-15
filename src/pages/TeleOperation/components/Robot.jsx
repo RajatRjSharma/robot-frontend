@@ -8,8 +8,8 @@ const Robot = ({ position }) => {
     position: "absolute",
     left: `${x}px`,
     top: `${y}px`,
-    width: "50px",
-    height: "50px",
+    width: "40px",
+    height: "40px",
     borderRadius: "50%",
   };
 

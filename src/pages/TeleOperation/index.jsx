@@ -27,9 +27,9 @@ const TeleOperation = () => {
         const newX = prev.x + x;
         const newY = prev.y + y;
         const xGreaterThanEqualZero = newX >= 0;
-        const xLessThanEqualWidth = newX <= boundaryBoundingBox.width - 50;
+        const xLessThanEqualWidth = newX <= boundaryBoundingBox.width - 40;
         const yGreaterThanEqualZero = newY >= 0;
-        const yLessThanEqualHeight = newY <= boundaryBoundingBox.height - 50;
+        const yLessThanEqualHeight = newY <= boundaryBoundingBox.height - 40;
         let newCoordinates = { ...prev };
         if (
           xGreaterThanEqualZero &&
@@ -41,14 +41,14 @@ const TeleOperation = () => {
         else {
           if (!xGreaterThanEqualZero) newCoordinates = { x: 0, y: prev.y };
           else if (!xLessThanEqualWidth)
-            newCoordinates = { x: boundaryBoundingBox.width - 50, y: prev.y };
+            newCoordinates = { x: boundaryBoundingBox.width - 40, y: prev.y };
 
           if (!yGreaterThanEqualZero)
             newCoordinates = { x: newCoordinates.x, y: 0 };
           else if (!yLessThanEqualHeight)
             newCoordinates = {
               x: newCoordinates.x,
-              y: boundaryBoundingBox.height - 50,
+              y: boundaryBoundingBox.height - 40,
             };
         }
         if (newCoordinates.x !== prev.x || newCoordinates.y !== prev.y)
@@ -149,7 +149,7 @@ const TeleOperation = () => {
   return (
     <div
       ref={boundaryElementRef}
-      className="relative w-full h-full bg-[#f0f0f0] overflow-hidden "
+      className="relative w-full h-full bg-[#f0f0f0] overflow-hidden ground"
     >
       <Joystick onMove={handleJoystickMove} />
       <Robot position={robotPosition} />

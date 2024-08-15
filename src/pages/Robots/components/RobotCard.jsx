@@ -5,6 +5,7 @@ import { setRobotForm } from "../../../store/robotSlice";
 import locationSvg from "../../../assets/location.svg";
 import Tooltip from "../../../components/Tooltip";
 import { useNavigate } from "react-router-dom";
+import { setSideBar } from "../../../store/genericSlice";
 
 const RobotCard = ({ selectedRobot }) => {
   const dispatch = useDispatch();

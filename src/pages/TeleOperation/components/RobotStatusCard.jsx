@@ -10,7 +10,7 @@ const RobotStatusCard = ({ robotDetails, robotPosition, messages }) => {
 
   return (
     <div
-      className="min-w-[200px] py-2 px-3 shadow-md rounded-md my-2 cursor-pointer bg-transparent flex flex-col gap-1 absolute z-50"
+      className="min-w-[200px] py-2 px-3 shadow-lg rounded-md my-2 cursor-pointer bg-gray-300 bg-opacity-50 flex flex-col gap-1 absolute z-50"
       style={{ right: "50px", bottom: "50px" }}
     >
       <div className="text-gray-900 font-semibold text-base border-b border-gray-300 w-full py-1 flex justify-between items-center">
