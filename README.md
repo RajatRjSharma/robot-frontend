@@ -1,8 +1,40 @@
-# React + Vite
+# Robot on Mission (React Project)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Vite-React frontend project.
+- Tailwind for CSS classes.
+- Redux-Toolkit for state management.
+- Axios for HTTP REST API calls.
+- React-Router-Dom for routing.
+- WebSocket for websocket connection.
+- Eslint for lint check and fix.
 
-Currently, two official plugins are available:
+## Before starting further please run npm install and add a /.env with required envs as shown in /.env.example
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+    (Install npm packages)
+    npm i / install
+
+    (Add /.env with required envs from /.env.example file)
+
+    (Run a dev instance)
+    npm run dev
+
+    (Run a lint check)
+    npm run lint
+
+## Project has 3 modules
+
+- Mission
+- Robot
+- Teleoperation
+
+### Mission
+
+- Mission module contains UI for CRUD REST APIs for missions.
+
+### Robot
+
+- Robot module contains UI for CRUD REST APIs for robot.
+
+### Tele-operation
+
+- Tele-operation module contains UI tele-operating a robot on the screen using a joystick button control and push the coordinates to the backend using websocket connection.
