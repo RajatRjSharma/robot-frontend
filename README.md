@@ -35,11 +35,21 @@
 ### Mission
 
 - Mission module contains UI for CRUD REST APIs for missions.
+- You can navigate from side bar to missions page or home page is the missions page itself.
+  ![Navigate to mission page](image.png)
+  ![Missions Page](image-1.png)
 
 ### Robot
 
 - Robot module contains UI for CRUD REST APIs for robot.
+- You can navigate from side bar to robots page.
+  ![Navigate to robot page](image-2.png)
+  ![Robot Page](image-3.png)
 
 ### Tele-operation
 
 - Tele-operation module contains UI tele-operating a robot on the screen using a joystick button control and push the coordinates to the backend using websocket connection.
+- To navigate to tele-operate you need to either view a robot details or need to view a mission details and there in the coordinates line you will find location icon which will navigate selected robot to tele-operate.
+  ![Navigate to Tele-operate from robot detail](image-4.png)
+  ![Navigate to Tele-operate from mission detail](image-5.png)
+  ![Tele-Operate page](image-6.png)
