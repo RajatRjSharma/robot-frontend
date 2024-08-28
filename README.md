@@ -49,7 +49,7 @@
 ### Tele-operation
 
 - Tele-operation module contains UI tele-operating a robot on the screen using a joystick button control and push the coordinates to the backend using websocket connection.
-- To navigate to tele-operate you need to either view a robot details or need to view a mission details and there in the coordinates line you will find location icon which will navigate selected robot to tele-operate.
+- To navigate to tele-operate you need to either view a robot details or need to view a mission details and there in the coordinates line you will find location icon that will navigate the selected robot to tele-operate.
   ![Navigate to Tele-operate from robot detail](image-4.png)
   ![Navigate to Tele-operate from mission detail](image-5.png)
   ![Tele-Operate page](image-6.png)
