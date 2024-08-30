@@ -2,6 +2,8 @@
 
 ## While using below link you may get warning for ssl certificate but you can accept it as I have used openssl for demonstration purpose
 
+### If you are using below link for apis please add api as base route eg: ```<aws-url>/api/<route>```
+
 [Live Link](https://ec2-13-127-133-231.ap-south-1.compute.amazonaws.com)
 
 - Vite-React frontend project.

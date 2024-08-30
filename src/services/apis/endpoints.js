@@ -1,7 +1,7 @@
 const endpoints = {
-  MISSION: "/api/mission/",
-  ROBOT: "/api/robot/",
-  TELEOPERATE: "/api/ws/movement/"
+  MISSION: "/mission/",
+  ROBOT: "/robot/",
+  TELEOPERATE: "/ws/movement/"
 };
 
 export default endpoints;
